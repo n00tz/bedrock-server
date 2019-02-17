@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM alpine:latest
 
 LABEL version="1.9.0.15"
 
@@ -8,16 +8,8 @@ ENV dlarc=https://minecraft.azureedge.net/bin-linux/${arc}
 
 WORKDIR /opt/minecraft
 
-RUN ["dnf", "-y", "upgrade"]
-RUN ["dnf", "-y", "install", "unzip" ]
-RUN ["dnf", "clean", "all"]
-RUN ["rm", "-rf", "/var/cache/dnf"]
+RUN apk --no-cache add unzip
 RUN ["mkdir", "/opt/minecraft/worlds"]
-
-# VOLUME ["/opt/minecraft/permissions.json"]
-# VOLUME ["/opt/minecraft/server.properties"]
-# VOLUME ["/opt/minecraft/whitelist.json"]
-# VOLUME ["/opt/minecraft/worlds"]
 
 ADD ${dlarc} ${arc}
 RUN unzip -n ${arc}
