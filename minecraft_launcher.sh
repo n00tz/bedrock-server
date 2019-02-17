@@ -1,7 +1,7 @@
 #!/bin/bash
 
 server=$1
-base_dir="/var/games"
+base_dir="/localstorage/system/conf/bedrock"
 work_dir="${base_dir}"/"${server}"
 
 mkdir -p "${work_dir}"
@@ -14,5 +14,7 @@ docker run -d -h ${server} --name=${server}\
  -v "${work_dir}/server.properties:/opt/minecraft/server.properties:z"\
  -v "${work_dir}/ops.json:/opt/minecraft2/ops.json:z"\
  -v "${work_dir}/worlds:/opt/minecraft/worlds:z"\
- --network=host\
- imetzach/minecraft-bedrockserver
+ --network=bridge\
+ -p 19132:19132\
+ -p 19133:19133\
+ n00tz/minecraft-bedrockserver:latest
