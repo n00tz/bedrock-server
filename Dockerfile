@@ -1,11 +1,11 @@
 FROM frolvlad/alpine-glibc:latest
 
-LABEL version="1.10.0.7"
+LABEL version="1.11.4.2"
 
 MAINTAINER Rial Sloan II <rial.sloan.ii@n00tz.net>
 
 ENV NAME Bedrock-Server
-ENV arc=bedrock-server-1.10.0.7.zip
+ENV arc=bedrock-server-1.11.4.2.zip
 ENV dlarc=https://minecraft.azureedge.net/bin-linux/${arc}
 
 RUN ["mkdir", "-p", "/opt/minecraft"]
